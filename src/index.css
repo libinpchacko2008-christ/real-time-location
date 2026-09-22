@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer utilities {
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glass-panel-light {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+  .glow-green {
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+  }
+  .glow-blue {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+  }
+  .glow-red {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Leaflet Map Custom Styling */
+.leaflet-container {
+  font-family: 'Inter', sans-serif !important;
+  background: #0f172a !important;
+}
+
+/* Custom dark mode map tile filters */
+.map-theme-dark .leaflet-tile-container {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.map-theme-midnight .leaflet-tile-container {
+  filter: invert(100%) hue-rotate(220deg) brightness(85%) contrast(95%) saturate(120%);
+}
+
+.map-theme-retro .leaflet-tile-container {
+  filter: sepia(80%) contrast(90%) brightness(100%) hue-rotate(-15deg);
+}
+
+.map-theme-silver .leaflet-tile-container {
+  filter: grayscale(100%) brightness(105%) contrast(95%);
+}
+
+/* Standard styling overrides for Leaflet */
+.leaflet-bar {
+  border: none !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+}
+
+.leaflet-bar a {
+  background-color: rgba(15, 23, 42, 0.85) !important;
+  color: #f1f5f9 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s;
+}
+
+.leaflet-bar a:hover {
+  background-color: rgba(30, 41, 59, 0.95) !important;
+  color: #3b82f6 !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(15, 23, 42, 0.75) !important;
+  color: #94a3b8 !important;
+  backdrop-filter: blur(4px);
+  font-size: 10px !important;
+  border-top-left-radius: 4px;
+}
+
+.leaflet-control-attribution a {
+  color: #60a5fa !important;
+}
+
+/* Custom Pulse Animation for GPS Marker */
+@keyframes pulse-gps {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+}
+
+.pulsing-gps-glow {
+  width: 14px;
+  height: 14px;
+  background: #3b82f6;
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.4);
+  position: relative;
+}
+
+.pulsing-gps-glow::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.3);
+  animation: pulse-gps 2s infinite ease-in-out;
+}
+
+.pulsing-sim-glow {
+  width: 14px;
+  height: 14px;
+  background: #10b981;
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.4);
+  position: relative;
+}
+
+.pulsing-sim-glow::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.3);
+  animation: pulse-gps 1.5s infinite ease-in-out;
+}
+
+/* For full height container */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Real-Time Location Tracker",
+  "description": "A comprehensive real-time location tracker with live GPS recording, trip statistics, path plotting, custom map simulations, GPX import/export, and trip history.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
